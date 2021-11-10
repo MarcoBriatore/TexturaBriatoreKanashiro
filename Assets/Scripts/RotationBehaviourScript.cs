@@ -5,7 +5,8 @@ using UnityEngine;
 public class RotationBehaviourScript : MonoBehaviour
 {
 
-    float rotationSpeed = 0.01f;
+    [SerializeField]
+    float rotationSpeed = 0.1f;
     float rotation = 0;
 
     // Start is called before the first frame update
@@ -17,8 +18,8 @@ public class RotationBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rotation += rotationSpeed;
-        
-        transform.localRotation = new Quaternion(rotation * Time.deltaTime, 0, 0, 1);
+        rotation += rotationSpeed * Time.deltaTime;
+
+        transform.Rotate(new Vector3(rotationSpeed, 0, 0), Space.Self);
     }
 }
